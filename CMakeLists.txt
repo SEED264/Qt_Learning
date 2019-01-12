@@ -6,6 +6,9 @@ set(CMAKE_CXX_COMPILER clang++)
 project(Qt_Learning CXX)
 # Find Qt5Widgets package
 find_package(Qt5Widgets REQUIRED)
+
+include_directories(Qt5Widgets_INCLUDE_DIR)
+
 # Set main source to variable
 set(APP_SOURCE src/Main.cc)
 

@@ -1,8 +1,9 @@
-#include <iostream>
-using std::cout;
-using std::endl;
+#include <QtWidgets/QtWidgets>
+#include <QtGui/QtGui>
 
 int main(int argc, char *argv[]) {
-    cout << "Project's first version." << endl;
-    return 0;
+    QApplication app(argc, argv);
+    QLabel *label = new QLabel("Hello Qt.");
+    label->show();
+    return app.exec();
 }
