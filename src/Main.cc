@@ -1,8 +1,10 @@
-#include <iostream>
-using std::cout;
-using std::endl;
+#include <QtWidgets/QApplication>
+#include "finddialog.h"
 
 int main(int argc, char *argv[]) {
-    cout << "Project's first version." << endl;
-    return 0;
+    QApplication app(argc, argv);
+    FindDialog *dialog = new FindDialog;
+    dialog->show();
+
+    return app.exec();
 }
