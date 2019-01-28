@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <QtWidgets/QtWidgets>
 #include <QtGui/QtGui>
 
@@ -27,3 +28,15 @@ int main(int argc, char *argv[]) {
 
     return app.exec();
 }
+=======
+#include <QtWidgets/QApplication>
+#include "finddialog.h"
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+    FindDialog *dialog = new FindDialog;
+    dialog->show();
+
+    return app.exec();
+}
+>>>>>>> 1-2
