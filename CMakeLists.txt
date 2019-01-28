@@ -15,7 +15,7 @@ include_directories(src)
 set(CMAKE_AUTOMOC ON)
 
 # Set main source to variable
-set(APP_SOURCE src/Main.cc src/finddialog.cc)
+set(APP_SOURCE src/main.cc src/finddialog.cc)
 add_executable(${PROJECT_NAME} ${APP_SOURCE})
 
 # Link Qt5 library
