@@ -6,6 +6,8 @@ set(CMAKE_CXX_COMPILER clang++)
 project(Qt_Learning CXX)
 
 # Find Qt5Widgets package
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Gui REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
 # Set include directories
@@ -14,9 +16,15 @@ include_directories(src)
 # Enable auto moc
 set(CMAKE_AUTOMOC ON)
 
-# Set main source to variable
-set(APP_SOURCE src/main.cc src/finddialog.cc)
+# Enable auto uic
+set(CMAKE_AUTOUIC ON)
+
+# Add subdirectories
+add_subdirectory(src/gotocell)
+
+# Set source
+set(APP_SOURCE src/main.cc)
 add_executable(${PROJECT_NAME} ${APP_SOURCE})
 
 # Link Qt5 library
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Widgets GoToCellDialog)
