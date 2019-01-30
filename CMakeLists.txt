@@ -20,11 +20,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
 # Add subdirectories
-add_subdirectory(src/gotocell)
+add_subdirectory(src/sort)
 
 # Set source
 set(APP_SOURCE src/main.cc)
 add_executable(${PROJECT_NAME} ${APP_SOURCE})
 
 # Link Qt5 library
-target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Widgets GoToCellDialog)
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Widgets SortDialog)

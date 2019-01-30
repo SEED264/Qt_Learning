@@ -1,13 +1,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 
-#include "gotocelldialog.h"
+#include "sortdialog.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    Ui::GoToCellDialog ui;
-    GoToCellDialog *dialog = new GoToCellDialog;
+    Ui::SortDialog ui;
+    SortDialog *dialog = new SortDialog;
     dialog->show();
 
     return app.exec();
