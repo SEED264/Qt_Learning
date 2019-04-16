@@ -1,14 +1,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 
-#include "sortdialog.h"
+#include "mainwindow.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    Ui::SortDialog ui;
-    SortDialog *dialog = new SortDialog;
-    dialog->show();
+    MainWindow *mainWindow = new MainWindow;
+    mainWindow->show();
 
     return app.exec();
 }
