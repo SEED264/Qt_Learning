@@ -1,8 +1,8 @@
 #include <QtGui/QIcon>
-#include <QtCore/QtCore>
+#include <QtWidgets/QtWidgets>
 #include "finddialog.h"
 #include "gotocelldialog.h"
-#include "mainwindow"
+#include "mainwindow.h"
 #include "sortdialog.h"
 #include "spreadsheet.h"
 
@@ -10,7 +10,7 @@ MainWindow::MainWindow() {
     spreadsheet = new Spreadsheet;
     setCentralWidget(spreadsheet);
 
-    createactions();
+    createActions();
     createMenus();
     createContextMenu();
     createToolBars();
@@ -21,7 +21,7 @@ MainWindow::MainWindow() {
     setWindowIcon(QIcon(":/images/icon.png"));
     setCurrentFile("");
 
-    setAttribute(WA_DeleteOnClose);
+    setAttribute(Qt::WA_DeleteOnClose);
 }
 
 void MainWindow::createActions() {
@@ -62,7 +62,7 @@ void MainWindow::createActions() {
     exitAction = new QAction(tr("E&xit"), this);
     exitAction->setShortcut(tr("Ctrl+Q"));
     exitAction->setStatusTip(tr("Exit the application"));
-    connect(exitAction, SIGNAL(triggered()), qApp, SLOT(closeAllWindows());
+    connect(exitAction, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
 
     cutAction = new QAction(tr("Cu&t"), this);
     cutAction->setIcon(QIcon(":/images/cut.png"));
@@ -173,7 +173,7 @@ void MainWindow::createMenus() {
     for(int i = 0; i < MaxRecentFiles; i++)
         fileMenu->addAction(recentFileActions[i]);
     fileMenu->addSeparator();
-    filemenu->addAction(exitAction);
+    fileMenu->addAction(exitAction);
 
     editMenu = menuBar()->addMenu(tr("&Edit"));
     editMenu->addAction(cutAction);
@@ -209,7 +209,7 @@ void MainWindow::createContextMenu() {
     spreadsheet->addAction(cutAction);
     spreadsheet->addAction(copyAction);
     spreadsheet->addAction(pasteAction);
-    spreadsheet->setContextMenuPolicy(ActionsContextMenu);
+    spreadsheet->setContextMenuPolicy(Qt::ActionsContextMenu);
 }
 
 void MainWindow::createToolBars() {
@@ -229,7 +229,7 @@ void MainWindow::createToolBars() {
 
 void MainWindow::createStatusBar() {
     locationLabel = new QLabel(" W999 ");
-    locationLabel->setAlignment(AlignHCenter);
+    locationLabel->setAlignment(Qt::AlignHCenter);
     locationLabel->setMinimumSize(locationLabel->sizeHint());
 
     formulaLabel = new QLabel;
@@ -346,7 +346,7 @@ void MainWindow::setCurrentFile(const QString &fileName) {
     if(!curFile.isEmpty()) {
         showName = strippedName(curFile);
         recentFiles.removeAll(curFile);
-        recentFiles.prepend();
+        recentFiles.prepend(curFile);
         updateRecentFileActions();
     }
 
@@ -389,10 +389,10 @@ void MainWindow::openRecentFile() {
 void MainWindow::find() {
     if(!findDialog) {
         findDialog = new FindDialog(this);
-        connect(findDialog, SIGNAL(findNext(const QString &, CaseSensitivity)),
-                spreadsheet, SLOT(findNext(const QString &, CaseSensitivity)));
-        connect(findDialog, SIGNAL(findPrevious(const QString &, CaseSensitivity)),
-                spreadsheet, SLOT(findPrevious(const QString &, CaseSensitivity)));
+        connect(findDialog, SIGNAL(findNext(const QString &, Qt::CaseSensitivity)),
+                spreadsheet, SLOT(findNext(const QString &, Qt::CaseSensitivity)));
+        connect(findDialog, SIGNAL(findPrevious(const QString &, Qt::CaseSensitivity)),
+                spreadsheet, SLOT(findPrevious(const QString &, Qt::CaseSensitivity)));
     }
 
     findDialog->show();
@@ -402,7 +402,7 @@ void MainWindow::find() {
 void MainWindow::goToCell() {
     GoToCellDialog dialog(this);
     if(dialog.exec()) {
-        QString str = dialog.lineEdit->text().toupper();
+        QString str = dialog.lineEdit->text().toUpper();
         spreadsheet->setCurrentCell(str.mid(1).toInt()-1, str[0].unicode() - 'A');
     }
 }
@@ -420,7 +420,7 @@ void MainWindow::sort() {
         compare.ascending[0] = (dialog.primaryOrderCombo->currentIndex() == 0);
         compare.ascending[1] = (dialog.secondaryOrderCombo->currentIndex() == 0);
         compare.ascending[2] = (dialog.tertiaryOrderCombo->currentIndex() == 0);
-        spreadsheet->sort(commpare);
+        spreadsheet->sort(compare);
     }
 }
 

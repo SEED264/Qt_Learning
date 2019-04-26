@@ -37,9 +37,9 @@ private:
     void createStatusBar();
     void readSettings();
     void writeSettings();
-    void okToContinue();
-    void loadFile(const QString &fileName);
-    void saveFile(const QString &fileName);
+    bool okToContinue();
+    bool loadFile(const QString &fileName);
+    bool saveFile(const QString &fileName);
     void setCurrentFile(const QString &fileName);
     void updateRecentFileActions();
     QString strippedName(const QString &fullFileName);
