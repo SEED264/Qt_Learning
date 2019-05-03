@@ -1,13 +1,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 
-#include "mainwindow.h"
+#include "hexspinbox.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    MainWindow *mainWindow = new MainWindow;
-    mainWindow->show();
+    HexSpinBox *hexSpinBox = new HexSpinBox;
+    hexSpinBox->show();
 
     return app.exec();
 }

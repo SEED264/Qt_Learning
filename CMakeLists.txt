@@ -23,14 +23,9 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 # Add subdirectories
-add_subdirectory(src/cell)
-add_subdirectory(src/finddialog)
-add_subdirectory(src/gotocell)
-add_subdirectory(src/sort)
-add_subdirectory(src/spreadsheet)
-add_subdirectory(src/mainwindow)
+add_subdirectory(src/hexspinbox)
 
-QT5_ADD_RESOURCES(RESOURCES res/resource.qrc)
+#QT5_ADD_RESOURCES(RESOURCES res/resource.qrc)
 
 # Set source
 set(APP_SOURCE src/main.cc)
@@ -39,10 +34,5 @@ add_executable(${PROJECT_NAME} ${APP_SOURCE} ${RESOURCES})
 # Link Qt5 library
 target_link_libraries(${PROJECT_NAME}
     Qt5::Core Qt5::Gui Qt5::Widgets
-    Cell
-    FindDialog
-    GoToCellDialog
-    SortDialog
-    Spreadsheet
-    MainWindow
+    HexSpinBox
 )
