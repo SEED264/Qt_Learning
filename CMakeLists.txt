@@ -23,7 +23,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 # Add subdirectories
-add_subdirectory(src/hexspinbox)
+add_subdirectory(src/iconeditor)
 
 #QT5_ADD_RESOURCES(RESOURCES res/resource.qrc)
 
@@ -34,5 +34,5 @@ add_executable(${PROJECT_NAME} ${APP_SOURCE} ${RESOURCES})
 # Link Qt5 library
 target_link_libraries(${PROJECT_NAME}
     Qt5::Core Qt5::Gui Qt5::Widgets
-    HexSpinBox
+    IconEditor
 )
